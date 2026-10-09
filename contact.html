@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — JECI 2026</title>
+  <meta name="description" content="Contactez l’équipe JECI 2026.">
+  <meta name="theme-color" content="#0B1F3A">
+  <link rel="icon" href="assets/logo/jeci-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact" class="font-sans">
+<a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-3 focus:left-3 focus:bg-or focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu</a>
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300"></header>
+<main id="contenu">
+<section class="relative overflow-hidden bg-marine text-ivoire pt-36 pb-20">
+  <div class="blob w-[520px] h-[520px] bg-emeraude -left-48 -top-56"></div>
+  <div class="blob w-[300px] h-[300px] bg-or right-[6%] -bottom-40"></div>
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+    <h1 class="hero-title text-5xl sm:text-7xl">Contact</h1>
+    <p class="mt-5 text-lg sm:text-xl text-ivoire/80 max-w-2xl">L’équipe JECI vous répond dès que possible.</p>
+  </div>
+</section>
+<section class="papier py-16 lg:py-24"><div class="max-w-6xl mx-auto px-5 lg:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-12">
+<div class="space-y-6">
+<div><h2 class="font-display font-extrabold text-3xl">Parlons-en</h2><p class="mt-3 text-marine/75 leading-relaxed">Une question, une proposition de partenariat, une envie d’intervenir ? Écris-nous.</p></div>
+<ul class="space-y-4">
+<li class="bg-white rounded-jeci p-5 shadow-soft"><p class="font-bold text-emeraude text-sm">Email</p><p class="font-semibold">contact@jeci-congo.com</p></li>
+<li class="bg-white rounded-jeci p-5 shadow-soft"><p class="font-bold text-emeraude text-sm">Téléphone</p><p class="font-semibold">+242 00 000 0000</p></li>
+<li class="bg-white rounded-jeci p-5 shadow-soft"><p class="font-bold text-emeraude text-sm">Lieu</p><p class="font-semibold">Brazzaville, Congo — adresse à confirmer</p></li></ul>
+<a href="index.html#inscription" class="btn btn-or">S’inscrire à l’événement</a></div>
+<form data-jeci-form="contact" novalidate class="bg-white rounded-[22px] p-6 sm:p-9 shadow-lift relative">
+<div class="grid sm:grid-cols-2 gap-5">
+<div><label for="c-nom" class="block font-semibold mb-1.5">Nom complet</label><input class="champ" id="c-nom" name="nom" required autocomplete="name"></div>
+<div><label for="c-email" class="block font-semibold mb-1.5">Email</label><input class="champ" id="c-email" name="email" type="email" required autocomplete="email"></div>
+<div class="sm:col-span-2"><label for="c-sujet" class="block font-semibold mb-1.5">Sujet</label><input class="champ" id="c-sujet" name="sujet" required></div>
+<div class="sm:col-span-2"><label for="c-msg" class="block font-semibold mb-1.5">Message</label><textarea class="champ" id="c-msg" name="message" rows="5" required></textarea></div></div>
+<input type="text" name="website" tabindex="-1" autocomplete="off" class="absolute -left-[9999px]" aria-hidden="true">
+<button type="submit" class="btn btn-emeraude w-full mt-7">Envoyer le message</button>
+<div data-feedback hidden aria-live="polite"></div></form></div></section>
+</main>
+<footer id="site-footer"></footer>
+
+<script src="js/main.js"></script>
+<script src="js/inscription.js"></script>
+</body>
+</html>
