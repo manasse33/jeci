@@ -4,13 +4,13 @@
    (aucune clé secrète côté front : l'URL du déploiement web suffit)
    ===================================================================== */
 
-// ⚠️ À REMPLACER par l'URL de déploiement « Application Web » de votre Apps Script
-const APPS_SCRIPT_URL = "VOTRE_URL_APPS_SCRIPT";
+// URL de déploiement « Application Web » de l'Apps Script (inchangée après « Nouvelle version »)
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al4gv0iLvI-mcadK3J6rS_ORZ5XwtKlOLzmbbWhVc7gra79TGi_GM0/exec";
 
 (() => {
   'use strict';
 
-  const URL_NON_CONFIGUREE = () => APPS_SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT' || !APPS_SCRIPT_URL;
+  const URL_NON_CONFIGUREE = () => !APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT';
 
   /** Envoie un objet de données à l'Apps Script et retourne la réponse JSON. */
   async function envoyer(payload) {
