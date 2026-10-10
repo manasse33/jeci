@@ -15,9 +15,11 @@
       { label: 'Actualités',  href: 'actualites.html',          page: 'actualites' },
       { label: 'FAQ',         href: 'index.html#faq',           page: 'faq' }
     ],
-    cta: { label: 'S’inscrire', href: 'index.html#inscription' },
-    email: 'contact@jeci-congo.com',          // À REMPLACER
-    telephone: '+242 00 000 0000',            // À REMPLACER
+    cta: { label: 'Se pré-inscrire', href: 'index.html#inscription' },
+    email: 'jeci4519@gmail.com',
+    telephone: '+242 06 832 35 33 / 05 561 19 63',
+    adresse: '77 rue Lekana, Avenue de la Paix, Moungali — Brazzaville',
+    lieuEvenement: 'Siège de la Maison Hongroise, King’s Appart, 34 rue Bergère, Bacongo',
     social: [
       { n: 'Facebook',  u: '#', d: 'M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z' },
       { n: 'Instagram', u: '#', d: 'M7.5 3h9A4.5 4.5 0 0121 7.5v9a4.5 4.5 0 01-4.5 4.5h-9A4.5 4.5 0 013 16.5v-9A4.5 4.5 0 017.5 3zm0 1.8A2.7 2.7 0 004.8 7.5v9a2.7 2.7 0 002.7 2.7h9a2.7 2.7 0 002.7-2.7v-9a2.7 2.7 0 00-2.7-2.7h-9zM12 8a4 4 0 110 8 4 4 0 010-8zm0 1.8a2.2 2.2 0 100 4.4 2.2 2.2 0 000-4.4zM17 6.6a1 1 0 110 2 1 1 0 010-2z' },
@@ -86,7 +88,7 @@
         <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <img src="assets/logo/jeci-logo.png" alt="JECI" class="h-14 w-auto rounded-xl mb-6" width="125" height="56">
-            <p class="max-w-md text-ivoire/75 leading-relaxed">Les Journées de l’Entrepreneur Créatif et Innovant réunissent à Brazzaville les créateurs, entrepreneurs et porteurs de projets qui construisent le Congo de demain.</p>
+            <p class="max-w-md text-ivoire/75 leading-relaxed">Les Journées de l’Entrepreneur Créatif et Innovant réunissent à Brazzaville les créateurs, entrepreneurs et porteurs de projets qui construisent le Congo de demain. Une initiative de Milane Parker Développement, en co-organisation avec ESM International.</p>
             <div class="flex gap-3 mt-6">${soc}</div>
           </div>
           <div>
@@ -100,8 +102,8 @@
           </div>
           <div>
             <p class="font-display font-bold text-lg mb-4">Rendez-vous</p>
-            <p class="text-ivoire/80 leading-relaxed">10 – 14 novembre 2026<br>Brazzaville, Congo<br><span class="text-ivoire/55">Lieu à confirmer</span></p>
-            <p class="mt-4 text-ivoire/80"><a class="hover:text-or" href="mailto:${SITE.email}">${SITE.email}</a></p>
+            <p class="text-ivoire/80 leading-relaxed">10 – 14 novembre 2026<br>Brazzaville, Congo<br><span class="text-ivoire/70">Maison Hongroise, King’s Appart</span></p>
+            <p class="mt-4 text-ivoire/80 text-sm leading-relaxed">${SITE.adresse}<br><a class="hover:text-or" href="mailto:${SITE.email}">${SITE.email}</a><br>${SITE.telephone}</p>
           </div>
         </div>
         <div class="relative border-t border-white/10">
@@ -171,18 +173,7 @@
       lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('button').focus();
     }));
     lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('button')) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); closeIdea(); } });
-  }
-
-  /* ---------- Modale « Partage ton idée » ---------- */
-  const idea = document.getElementById('idea-modal');
-  function closeIdea() { if (idea) { idea.classList.add('hidden'); idea.classList.remove('flex'); document.body.style.overflow = ''; } }
-  if (idea) {
-    document.querySelectorAll('[data-open-idea]').forEach(b => b.addEventListener('click', () => {
-      idea.classList.remove('hidden'); idea.classList.add('flex'); document.body.style.overflow = 'hidden';
-      idea.querySelector('textarea').focus();
-    }));
-    idea.addEventListener('click', (e) => { if (e.target === idea || e.target.closest('[data-close-idea]')) closeIdea(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   }
 
   /* ---------- Année dynamique éventuelle ---------- */

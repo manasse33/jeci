@@ -4,12 +4,13 @@
    (aucune clé secrète côté front : l'URL du déploiement web suffit)
    ===================================================================== */
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al4gv0iLvI-mcadK3J6rS_ORZ5XwtKlOLzmbbWhVc7gra79TGi_GM0/exec";
+// ⚠️ À REMPLACER par l'URL de déploiement « Application Web » de votre Apps Script
+const APPS_SCRIPT_URL = "VOTRE_URL_APPS_SCRIPT";
 
 (() => {
   'use strict';
 
-  const URL_NON_CONFIGUREE = () => !APPS_SCRIPT_URL || APPS_SCRIPT_URL === "VOTRE_URL_APPS_SCRIPT";
+  const URL_NON_CONFIGUREE = () => APPS_SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT' || !APPS_SCRIPT_URL;
 
   /** Envoie un objet de données à l'Apps Script et retourne la réponse JSON. */
   async function envoyer(payload) {
@@ -35,10 +36,17 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al
       const vide = !champ.value.trim();
       let invalide = vide;
       if (!vide && champ.type === 'email') invalide = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(champ.value);
+      if (champ.type === 'radio') return;
       if (!vide && champ.type === 'tel') invalide = champ.value.replace(/\D/g, '').length < 8;
       champ.classList.toggle('invalide', invalide);
       champ.setAttribute('aria-invalid', String(invalide));
       if (invalide) ok = false;
+    });
+    // Groupes de boutons radio obligatoires
+    form.querySelectorAll('fieldset[data-required-radio]').forEach(fs => {
+      const coche = fs.querySelector('input[type="radio"]:checked');
+      fs.classList.toggle('invalide', !coche);
+      if (!coche) ok = false;
     });
     return ok;
   }
@@ -54,7 +62,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al
   }
 
   document.querySelectorAll('form[data-jeci-form]').forEach(form => {
-    const type = form.dataset.jeciForm;                 // "inscription" | "idee" | "contact"
+    const type = form.dataset.jeciForm;                 // "inscription" | "contact"
     const zone = form.querySelector('[data-feedback]');
     const bouton = form.querySelector('button[type="submit"]');
     const libelle = bouton.innerHTML;
@@ -77,10 +85,9 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al
       try {
         await envoyer(data);
         message(zone, 'ok', type === 'inscription'
-          ? 'Merci ! Votre inscription est bien enregistrée. À très bientôt aux JECI 2026.'
+          ? 'Merci ! Votre pré-inscription est bien enregistrée. L’équipe JECI vous contactera pour un entretien en présentiel.'
           : 'Merci ! Votre message a bien été transmis à l’équipe JECI.');
         form.reset();
-        if (type === 'idee') setTimeout(() => document.querySelector('#idea-modal [data-close-idea]')?.click(), 2200);
       } catch (err) {
         console.error('[JECI] Échec de l’envoi :', err);
         message(zone, 'err', 'L’envoi a échoué. ' + (URL_NON_CONFIGUREE() ? err.message : 'Vérifiez votre connexion et réessayez.'));
