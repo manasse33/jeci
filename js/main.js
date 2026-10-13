@@ -12,6 +12,7 @@
       { label: 'À propos',    href: 'index.html#apropos',       page: 'apropos' },
       { label: 'Programme',   href: 'programme.html',           page: 'programme' },
       { label: 'Intervenants',href: 'intervenants.html',        page: 'intervenants' },
+      { label: 'Exposants',   href: 'exposants.html',           page: 'exposants' },
       { label: 'Actualités',  href: 'actualites.html',          page: 'actualites' },
       { label: 'FAQ',         href: 'index.html#faq',           page: 'faq' }
     ],
@@ -46,7 +47,7 @@
         <a href="index.html" aria-label="JECI — Accueil" class="shrink-0">
           <img src="assets/logo/jeci-logo.png" alt="JECI — Journées de l’Entrepreneur Créatif et Innovant" class="h-11 sm:h-12 w-auto rounded-xl shadow-soft" width="107" height="48">
         </a>
-        <nav class="hidden lg:flex items-center gap-8 text-ivoire text-[15px]" aria-label="Navigation principale">${links}</nav>
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-ivoire text-[15px]" aria-label="Navigation principale">${links}</nav>
         <div class="flex items-center gap-3">
           <a href="${SITE.cta.href}" class="btn btn-or hidden sm:inline-flex !min-h-[44px] !py-2 !px-5 text-sm">${SITE.cta.label}</a>
           <button id="burger" class="lg:hidden w-12 h-12 rounded-xl border border-white/30 text-ivoire flex items-center justify-center" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
@@ -97,6 +98,7 @@
               <li><a class="hover:text-or" href="index.html">Accueil</a></li>
               <li><a class="hover:text-or" href="index.html#apropos">À propos</a></li>
               <li><a class="hover:text-or" href="programme.html">Programme</a></li>
+              <li><a class="hover:text-or" href="exposants.html">Exposants</a></li>
               <li><a class="hover:text-or" href="contact.html">Contact</a></li>
             </ul>
           </div>

@@ -62,7 +62,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al
   }
 
   document.querySelectorAll('form[data-jeci-form]').forEach(form => {
-    const type = form.dataset.jeciForm;                 // "inscription" | "contact"
+    const type = form.dataset.jeciForm;                 // "inscription" | "exposant" | "contact"
     const zone = form.querySelector('[data-feedback]');
     const bouton = form.querySelector('button[type="submit"]');
     const libelle = bouton.innerHTML;
@@ -84,9 +84,12 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw12aFOtXZh8-Al
 
       try {
         await envoyer(data);
-        message(zone, 'ok', type === 'inscription'
-          ? 'Merci ! Votre pré-inscription est bien enregistrée. L’équipe JECI vous contactera pour un entretien en présentiel.'
-          : 'Merci ! Votre message a bien été transmis à l’équipe JECI.');
+        const msgs = {
+          inscription: 'Merci ! Votre pré-inscription est bien enregistrée. L’équipe JECI vous contactera pour un entretien en présentiel.',
+          exposant: 'Merci ! Votre candidature d’exposant est bien enregistrée. L’équipe JECI l’étudie et reviendra vers vous.',
+          contact: 'Merci ! Votre message a bien été transmis à l’équipe JECI.'
+        };
+        message(zone, 'ok', msgs[type] || msgs.contact);
         form.reset();
       } catch (err) {
         console.error('[JECI] Échec de l’envoi :', err);
